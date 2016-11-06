@@ -1,0 +1,65 @@
+ <div class="container">
+    
+     
+       <div class="row">
+       <div class="col-xs-5">
+       <form>
+       <div class="col-xs-8">
+       <input class="form-control" type="input" ng-model="wordLength" placeholder="Enter a number">
+       </input>
+       </div>
+       <div class="col-xs-4">
+       <button type="submit" ng-click="createGame(wordLength)" class="btn btn-primary">Submit</button>
+      </div>
+       </form>
+       </div>
+       </div>
+    
+    <br><br>
+     <div class="container" ng-show="wordLength!=0" >
+     
+    <div class="row" ng-repeat="turn in turns track by $index">
+   <div class="col-xs-2 text-center" ng-repeat="letter in turn.currentWord.letters track by $index">
+    <div class="input-group ">
+    <input class="form-control input-md"  ng-model="letter" maxlength="1" >
+    </div>
+    </div>
+     <div class="col-xs-1">
+      <button type="submit" class="btn btn-primary" disabled="disabled">Go</button>
+    </div>
+     <div class="col-xs-3">
+      Exact Match: {{turn.exactMatch}} <br>
+      Normal Match: {{turn.normalMatch}}
+    </div>
+    <br><br><br>
+  </div>
+
+    <form ng-show="!isDone && letters.length >0">
+
+   <div >
+   <div class="row">
+   <div ng-repeat="letter in letters track by $index" class="col-xs-2">
+    <input class="form-control input-md text-center" ng-model="letters[$index]" maxlength="1">
+    </div> 
+    <div class="col-xs-1">
+      <button type="submit" ng-click="go()" class="btn btn-primary">Go</button>
+      </div>
+      </div>  
+  </div>
+
+  </form>
+
+    
+    </div>
+    <div class="container">
+      
+      <div class="row" ng-show="isDone">
+      <p class="text-success">{{message}}</p>  
+      </div>
+    </div>
+
+
+
+  <p><a href="#/login" class="btn btn-primary">Logout</a></p>
+
+    </div>
